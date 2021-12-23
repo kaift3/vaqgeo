@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { AuthContext } from "./Contexts/Context/AuthContext";
 import { dropdownItems } from "./NavItems";
-
+import { Link } from "react-router-dom";
 const MyNavbar = () => {
   //const [dropdown, setDropdown] = useState(false);
   // const [click, setClick] = useState(false)
@@ -11,70 +11,85 @@ const MyNavbar = () => {
 
   const navLinks = (
     <>
-      <Nav className="ms-5">
-        <Nav.Link href="/home" className="ms-2 fs-5">
-          Home
-        </Nav.Link>
-        <Nav.Link href="/about" className=" ms-2 fs-5">
-          About
-        </Nav.Link>
+      <Nav className=" navbar-collapse ms-5">
+        <ul class="navbar-nav mr-auto">
+          <Nav.Link to="/home" className="ms-2 fs-5">
+            Home
+          </Nav.Link>
+          <Nav.Link to="/about" className=" ms-2 fs-5">
+            About
+          </Nav.Link>
 
-        <NavDropdown
-          menuVariant="dark"
-          className="ms-2 fs-5"
-          title="Navigation"
-          id="basic-nav-dropdown"
-        >
-          {/* <NavDropdown.Item href="/home">Home</NavDropdown.Item>
+          <NavDropdown
+            menuVariant="dark"
+            className="ms-2 fs-5"
+            title="Navigation"
+            id="basic-nav-dropdown"
+          >
+            {/* <NavDropdown.Item href="/home">Home</NavDropdown.Item>
       <NavDropdown.Item href="/about">About</NavDropdown.Item> */}
-          {dropdownItems.map((item) => {
-            return (
-              <NavDropdown.Item href={item.path} className="fs-5">
-                {item.title}
-              </NavDropdown.Item>
-            );
-          })}
-          <NavDropdown.Divider />
-          <NavDropdown.Item href="/contact" className="fs-5">
-            Hello
-          </NavDropdown.Item>
-        </NavDropdown>
-        <NavDropdown
-          menuVariant="dark"
-          className="ms-2 fs-5"
-          title="OpenLayer"
-          id="basic-nav-dropdown"
-        >
-          <NavDropdown.Item href="#action/3.1" className="fs-5">
-            Location
-          </NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.2" className="fs-5">
-            Distance
-          </NavDropdown.Item>
-          <NavDropdown.Divider />
-          <NavDropdown.Item href="#action/3.4" className="fs-5">
-            Map
-          </NavDropdown.Item>
-        </NavDropdown>
+            {dropdownItems.map((item) => {
+              return (
+                <NavDropdown.Item href={item.path} className="fs-5">
+                  {item.title}
+                </NavDropdown.Item>
+              );
+            })}
+            <NavDropdown.Divider />
+            <NavDropdown.Item href="/contact" className="fs-5">
+              Hello
+            </NavDropdown.Item>
+          </NavDropdown>
+          <NavDropdown
+            menuVariant="dark"
+            className="ms-2 fs-5"
+            title="OpenLayer"
+            id="basic-nav-dropdown"
+          >
+            <NavDropdown.Item href="#action/3.1" className="fs-5">
+              Location
+            </NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.2" className="fs-5">
+              Distance
+            </NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item href="#action/3.4" className="fs-5">
+              Map
+            </NavDropdown.Item>
+          </NavDropdown>
+        </ul>
+        <form class="form-inline ">
+          <button
+            type="button"
+            class="btn btn-outline-light float-right my-2 my-sm-0"
+            onClick={logout}
+          >
+            Sign Out
+          </button>
+        </form>
       </Nav>
-      <button type="button" class="btn btn-outline-light" onClick={logout}>
-        Sign Out
-      </button>
     </>
   );
 
   return (
-    <div className="" style={{ width: "100vw" }}>
-      <Navbar className="" variant="dark" bg="dark" expand="lg">
-        <Navbar.Brand className="fs-2 fw-bold text-white ms-5" href="/home">
-          GIS Application
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav" className="">
-          {isAuthenticated ? navLinks : null}
-        </Navbar.Collapse>
-      </Navbar>
-    </div>
+    <>
+      <div className="" style={{ width: "100vw" }}>
+        <Navbar
+          className="navbar navbar-expand-lg navbar-dark bg-dark"
+          variant="dark"
+          bg="dark"
+          expand="lg"
+        >
+          <Navbar.Brand className="fs-2 fw-bold text-white ms-5" href="/home">
+            GIS Application
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav" className="">
+            {isAuthenticated ? navLinks : null}
+          </Navbar.Collapse>
+        </Navbar>
+      </div>
+    </>
   );
 };
 

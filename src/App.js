@@ -5,7 +5,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import MyRoutes from "./Components/Layout/Routes";
 import { createTheme } from "@material-ui/core";
 import { ThemeProvider } from "react-bootstrap";
-import { AuthContext } from "./Components/Contexts/Context/AuthContext";
+import {
+  AuthContext,
+  AuthProvider,
+} from "./Components/Contexts/Context/AuthContext";
 import jwt from "jsonwebtoken";
 import { AuthService } from "./Components/Services/AuthService";
 import PrivateRoute from "./Components/Routes/PrivateRoute";
@@ -16,6 +19,8 @@ import Home from "./Components/Pages/Home";
 import Services from "./Components/Pages/Services.js";
 import Navbar from "./Components/Navbar.js";
 import Login from "./Components/Pages/Login.js";
+import SignUp from "./Components/Pages/SignUp";
+import BasicMap from "./Components/Pages/BasicMap";
 
 function App() {
   const theme = createTheme();
@@ -45,81 +50,101 @@ function App() {
 
   return (
     <>
-      {/* <AuthProvider> */}
-      <ThemeProvider theme={theme}>
-        <div className="App">
-          <Router>
-            <>
-              {/* {window.location.pathname !== "/login" && <Navbar />} */}
-              <Navbar />
-              <Routes>
-                <Route
-                  path="/home"
-                  exact
-                  element={
-                    <PrivateRoute>
-                      <Home />
-                    </PrivateRoute>
-                  }
-                />
+      <AuthProvider>
+        <ThemeProvider theme={theme}>
+          <div className="App">
+            <Router>
+              <>
+                {/* {window.location.pathname !== "/login" && <Navbar />} */}
+                <Navbar />
+                <Routes>
+                  <Route
+                    path="/home"
+                    exact
+                    element={
+                      <PrivateRoute>
+                        <Home />
+                      </PrivateRoute>
+                    }
+                  />
 
-                <Route
-                  path="/about"
-                  exact
-                  element={
-                    <PrivateRoute>
-                      <About />
-                    </PrivateRoute>
-                  }
-                />
+                  <Route
+                    path="/about"
+                    exact
+                    element={
+                      <PrivateRoute>
+                        <About />
+                      </PrivateRoute>
+                    }
+                  />
 
-                <Route
-                  path="/services"
-                  exact
-                  element={
-                    <PrivateRoute>
-                      <Services />
-                    </PrivateRoute>
-                  }
-                />
+                  <Route
+                    path="/services"
+                    exact
+                    element={
+                      <PrivateRoute>
+                        <Services />
+                      </PrivateRoute>
+                    }
+                  />
 
-                <Route
-                  path="/contact"
-                  exact
-                  element={
-                    <PrivateRoute>
-                      <Contact />
-                    </PrivateRoute>
-                  }
-                />
+                  <Route
+                    path="/contact"
+                    exact
+                    element={
+                      <PrivateRoute>
+                        <Contact />
+                      </PrivateRoute>
+                    }
+                  />
 
-                <Route
-                  path="/login"
-                  exact
-                  element={
-                    <PublicRoute>
-                      <Login />
-                    </PublicRoute>
-                  }
-                />
+                  <Route
+                    path="/login"
+                    exact
+                    element={
+                      <PublicRoute>
+                        <Login />
+                      </PublicRoute>
+                    }
+                  />
 
-                {/* <Route path="/signup" exact element={<SignUp/>}/> */}
+                  <Route
+                    path="/signup"
+                    exact
+                    element={
+                      <PublicRoute>
+                        <SignUp />
+                      </PublicRoute>
+                    }
+                  />
 
-                <Route
-                  path="*"
-                  exact
-                  element={
-                    <PrivateRoute>
-                      <Home />
-                    </PrivateRoute>
-                  }
-                />
-              </Routes>
-            </>
-          </Router>
-        </div>
-      </ThemeProvider>
-      {/* </AuthProvider> */}
+                  <Route
+                    path="/basicmap"
+                    exact
+                    element={
+                      <PublicRoute>
+                        <BasicMap />
+                      </PublicRoute>
+                    }
+                  />
+
+                  {/* <Route path="/signup" exact element={<SignUp/>}/> */}
+
+                  <Route
+                    path="*"
+                    exact
+                    element={
+                      <PrivateRoute>
+                        <Home />
+                      </PrivateRoute>
+                    }
+                  />
+                </Routes>
+              </>
+            </Router>
+          </div>
+        </ThemeProvider>
+      </AuthProvider>
     </>
   );
 }
