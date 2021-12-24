@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import Container from "@material-ui/core/Container";
 import { Navigate, Link } from "react-router-dom";
 import { AuthContext } from "../Contexts/Context/AuthContext";
+import CustomInput from "../UI/CustomInput";
 import "./Login.css";
 
 export default function SignIn() {
@@ -73,46 +74,50 @@ export default function SignIn() {
       {/* <div id="emailHelp" class="form-text">
           Don't have an account? Sign Up <Link to="/signup">here</Link>
         </div> */}
-      <section class="vh-100 wh-auto gradient-custom">
+      <section class="vh-auto wh-auto gradient-custom">
         <div class="container py-5 h-80">
           <div class="row d-flex justify-content-center align-items-center h-auto w-auto">
             <div class="col-12 col-md-8 col-lg-6 col-xl-4">
               <div class="black-card card bg-dark text-white">
                 <div class="card-body p-5 text-center">
-                  <div class="mb-md-5 mt-md-4 pb-5">
+                  <div class="mb-md-5 my-4 pb-5">
                     <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
                     <p class="text-white-50 mb-5">
                       Please enter your credentials
                     </p>
 
-                    <div class="form-outline">
-                      <h6>
+                    <div class="form-outline mb-2">
+                      {/* <h6>
                         <label class="form-label" for="password">
                           Email
                         </label>
-                      </h6>
-                      <input
+                      </h6> */}
+                      <CustomInput
                         type="username"
+                        labelText="Email"
                         class="form-control form-control-lg mb-4 "
                         id="username"
                         value={state.username}
                         onChange={handleChange}
                         aria-describedby="emailHelp"
+                        autoFocus="true"
                       />
                     </div>
 
-                    <div class="form-outline form-white mb-4">
-                      <h6>
+                    <div class="form-outline form-white mb-5">
+                      {/* <h6>
                         <label class="form-label" for="password">
                           Password
                         </label>
-                      </h6>
-                      <input
+                      </h6> */}
+                      <CustomInput
                         type="password"
-                        class="form-control form-control-lg mb-4"
+                        labelText="Password"
+                        class="form-control form-control-lg mb-5"
                         value={state.password}
                         onChange={handleChange}
                         id="password"
+                        autoFocus="true"
                       />
                     </div>
 

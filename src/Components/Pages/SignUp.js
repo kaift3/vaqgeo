@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import Container from "@material-ui/core/Container";
 import { Navigate, useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../Contexts/Context/AuthContext";
+import CustomInput from "../UI/CustomInput";
 import "./Login.css";
 
 export default function SignUp() {
@@ -48,33 +49,35 @@ export default function SignUp() {
             <div class="col-12 col-md-6 col-lg-6 col-xl-4">
               <div class="black-card card bg-dark text-white">
                 <div class="card-body p-2 text-center">
-                  <div class="mb-md-5 mt-md-4 pb-5">
+                  <div class="mb-md-0 mt-md-4 pb-5">
                     <h2 class="fw-bold mb-2 text-uppercase mt-5">Sign Up</h2>
                     <p class="text-white-50 mb-5">Please enter your details</p>
                     <Container component="main" maxWidth="xs">
                       {/* {isAuthenticated.toString()}
         <br />
         {state.username + " " + state.password + " " + state.designation} */}
-                      <div class="mb-3">
-                        <label for="designation" class="form-label">
+                      <div class="mb-2">
+                        {/* <label for="designation" class="form-label">
                           Name
-                        </label>
-                        <input
+                        </label> */}
+                        <CustomInput
                           required
                           type="text"
-                          class="form-control form-control-lg mb-4"
+                          labelText="Name"
+                          class="form-control login-username form-control-lg mb-4"
                           value={state.designation}
                           onChange={handleChange}
                           id="designation"
                         />
                       </div>
-                      <div class="mb-3">
-                        <label for="username" class="form-label">
-                          Email address
-                        </label>
-                        <input
+                      <div class="mb-2">
+                        {/* <label for="username" class="form-label">
+                          Email Address
+                        </label> */}
+                        <CustomInput
                           required
                           type="username"
+                          labelText="Email"
                           class="form-control form-control-lg mb-4"
                           id="username"
                           value={state.username}
@@ -82,13 +85,14 @@ export default function SignUp() {
                           aria-describedby="emailHelp"
                         />
                       </div>
-                      <div class="mb-3">
-                        <label for="password" class="form-label">
+                      <div class="mb-5">
+                        {/* <label for="password" class="form-label">
                           Password
-                        </label>
-                        <input
+                        </label> */}
+                        <CustomInput
                           required
                           type="password"
+                          labelText="Password"
                           class="form-control form-control-lg mb-4"
                           value={state.password}
                           onChange={handleChange}
