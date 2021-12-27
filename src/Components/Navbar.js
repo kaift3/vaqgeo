@@ -13,16 +13,16 @@ const MyNavbar = () => {
     <>
       <Nav className=" navbar-collapse ms-5">
         <ul class="navbar-nav mr-auto">
-          <Nav.Link to="/home" className="ms-2 fs-5">
+          <Nav.Link href="/home" className="nav-item ms-4 fs-5">
             Home
           </Nav.Link>
-          <Nav.Link to="/about" className=" ms-2 fs-5">
+          <Nav.Link href="/about" className="nav-item ms-4 fs-5">
             About
           </Nav.Link>
 
           <NavDropdown
             menuVariant="dark"
-            className="ms-2 fs-5"
+            className="nav-item ms-4 fs-5"
             title="Navigation"
             id="basic-nav-dropdown"
           >
@@ -42,7 +42,7 @@ const MyNavbar = () => {
           </NavDropdown>
           <NavDropdown
             menuVariant="dark"
-            className="ms-2 fs-5"
+            className="nav-item ms-4 fs-5"
             title="OpenLayer"
             id="basic-nav-dropdown"
           >
@@ -73,9 +73,9 @@ const MyNavbar = () => {
 
   return (
     <>
-      <div className="" style={{ width: "100vw" }}>
+      <div className="">
         <Navbar
-          className="navbar navbar-expand-lg navbar-dark bg-dark"
+          className="navbar navbar-expand-lg navbar-dark bg-dark "
           variant="dark"
           bg="dark"
           expand="lg"
@@ -85,7 +85,8 @@ const MyNavbar = () => {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" className="">
-            {isAuthenticated ? navLinks : null}
+            {/* {isAuthenticated ? navLinks : null} */}
+            {navLinks}
           </Navbar.Collapse>
         </Navbar>
       </div>

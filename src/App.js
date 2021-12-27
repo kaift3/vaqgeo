@@ -62,9 +62,9 @@ function App() {
                     path="/home"
                     exact
                     element={
-                      <PrivateRoute>
+                      <PublicRoute>
                         <Home />
-                      </PrivateRoute>
+                      </PublicRoute>
                     }
                   />
 

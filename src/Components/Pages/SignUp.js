@@ -50,7 +50,9 @@ export default function SignUp() {
               <div class="black-card card bg-dark text-white">
                 <div class="card-body p-2 text-center">
                   <div class="mb-md-0 mt-md-4 pb-5">
-                    <h2 class="fw-bold mb-2 text-uppercase mt-5">Sign Up</h2>
+                    <h2 class="form-title fw-bold mb-2 text-uppercase mt-5">
+                      Sign Up
+                    </h2>
                     <p class="text-white-50 mb-5">Please enter your details</p>
                     <Container component="main" maxWidth="xs">
                       {/* {isAuthenticated.toString()}

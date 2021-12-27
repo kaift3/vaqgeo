@@ -81,7 +81,9 @@ export default function SignIn() {
               <div class="black-card card bg-dark text-white">
                 <div class="card-body p-5 text-center">
                   <div class="mb-md-5 my-4 pb-5">
-                    <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                    <h2 class="form-title fw-bold mb-2 text-uppercase">
+                      Login
+                    </h2>
                     <p class="text-white-50 mb-5">
                       Please enter your credentials
                     </p>
