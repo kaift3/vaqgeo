@@ -49,8 +49,8 @@ const MyNavbar = () => {
             <NavDropdown.Item href="#action/3.1" className="fs-5">
               Location
             </NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2" className="fs-5">
-              Distance
+            <NavDropdown.Item href="/mymap" className="fs-5">
+              GeoFence
             </NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item href="#action/3.4" className="fs-5">
@@ -80,12 +80,12 @@ const MyNavbar = () => {
           bg="dark"
           expand="lg"
         >
-          <Navbar.Brand className="fs-2 fw-bold text-white ms-5" href="/home">
+          <Navbar.Brand className="fs-2 fw-bold text-white ms-3" href="/home">
             GIS Application
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" className="">
-            {/* {isAuthenticated ? navLinks : null} */}
+            {isAuthenticated ? navLinks : null}
             {navLinks}
           </Navbar.Collapse>
         </Navbar>

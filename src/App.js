@@ -20,6 +20,7 @@ import Services from "./Components/Pages/Services.js";
 import Navbar from "./Components/Navbar.js";
 import Login from "./Components/Pages/Login.js";
 import SignUp from "./Components/Pages/SignUp";
+import MyMap from "./Components/Pages/MyMap";
 import BasicMap from "./Components/Pages/BasicMap";
 
 function App() {
@@ -124,6 +125,16 @@ function App() {
                     element={
                       <PublicRoute>
                         <BasicMap />
+                      </PublicRoute>
+                    }
+                  />
+
+                  <Route
+                    path="/mymap"
+                    exact
+                    element={
+                      <PublicRoute>
+                        <MyMap />
                       </PublicRoute>
                     }
                   />

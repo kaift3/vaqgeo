@@ -46,6 +46,7 @@ const BasicMap = () => {
 
   return (
     <div>
+      <h4>{markersLonLat}</h4>
       <Map center={fromLonLat(center)} zoom={zoom}>
         <Layers>
           <TileLayer source={osm()} zIndex={0} />
