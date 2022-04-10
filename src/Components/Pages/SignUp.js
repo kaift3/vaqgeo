@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import Container from "@material-ui/core/Container";
-import { Navigate, useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../Contexts/Context/AuthContext";
 import CustomInput from "../UI/CustomInput";
 import "./Login.css";
@@ -9,16 +9,16 @@ export default function SignUp() {
   const { saveUser, isAuthenticated } = useContext(AuthContext);
 
   const [state, setState] = useState({
-    username: "",
+    email: "",
     password: "",
-    designation: "",
+    name: "",
   });
 
   const handleChange = (event) => {
-    setState((prevState) => ({
-      ...prevState,
+    setState({
+      ...state,
       [event.target.id]: event.target.value,
-    }));
+    });
   };
 
   const validateEmail = (email) => {
@@ -30,14 +30,18 @@ export default function SignUp() {
   };
 
   const navigate = useNavigate();
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     // eslint-disable-next-line no-console
-    if (validateEmail(state.username)) {
-      saveUser(state.username, state.password, state.designation);
-      navigate("/login");
-    } else {
-      console.log("invalid email");
+    if (validateEmail(state.email)) {
+      saveUser(state.email, state.password, state.name).then((response) => {
+        console.log(response);
+        if (response.data.message === "success") {
+          navigate("/login");
+        } else {
+          alert("User already exists");
+        }
+      });
     }
   };
 
@@ -57,7 +61,7 @@ export default function SignUp() {
                     <Container component="main" maxWidth="xs">
                       {/* {isAuthenticated.toString()}
         <br />
-        {state.username + " " + state.password + " " + state.designation} */}
+        {state.email + " " + state.password + " " + state.designation} */}
                       <div class="mb-2">
                         {/* <label for="designation" class="form-label">
                           Name
@@ -66,24 +70,36 @@ export default function SignUp() {
                           required
                           type="text"
                           labelText="Name"
-                          class="form-control login-username form-control-lg mb-4"
-                          value={state.designation}
-                          onChange={handleChange}
-                          id="designation"
+                          class="form-control login-email form-control-lg mb-4"
+                          value={state.name}
+                          handleChange={handleChange}
+                          id="name"
                         />
                       </div>
                       <div class="mb-2">
-                        {/* <label for="username" class="form-label">
+                        {/* <label for="email" class="form-label">
                           Email Address
                         </label> */}
                         <CustomInput
                           required
-                          type="username"
+                          type="email"
                           labelText="Email"
                           class="form-control form-control-lg mb-4"
-                          id="username"
-                          value={state.username}
-                          onChange={handleChange}
+                          id="email"
+                          value={state.email}
+                          handleChange={handleChange}
+                          aria-describedby="emailHelp"
+                        />
+                      </div>
+                      <div class="mb-2">
+                        <CustomInput
+                          required
+                          type="text"
+                          labelText="Phone"
+                          class="form-control form-control-lg mb-4"
+                          id="phone"
+                          //value={state.email}
+                          // handleChange={handleChange}
                           aria-describedby="emailHelp"
                         />
                       </div>
@@ -97,7 +113,7 @@ export default function SignUp() {
                           labelText="Password"
                           class="form-control form-control-lg mb-4"
                           value={state.password}
-                          onChange={handleChange}
+                          handleChange={handleChange}
                           id="password"
                         />
                       </div>
@@ -152,9 +168,9 @@ export default function SignUp() {
                     <div class="form-outline form-white mb-4">
                       <input
                         class="form-control form-control-lg"
-                        type="username"
-                        id="username"
-                        value={state.username}
+                        type="email"
+                        id="email"
+                        value={state.email}
                         onChange={handleChange}
                         aria-describedby="emailHelp"
                       />

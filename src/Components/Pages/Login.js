@@ -1,49 +1,58 @@
 import React, { useContext, useState } from "react";
 import Container from "@material-ui/core/Container";
-import { Navigate, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../Contexts/Context/AuthContext";
 import CustomInput from "../UI/CustomInput";
 import "./Login.css";
 
 export default function SignIn() {
   const { login, isAuthenticated } = useContext(AuthContext);
-
+  const navigate = useNavigate();
   const [state, setState] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
   const handleChange = (event) => {
     setState((prevState) => ({
       ...prevState,
-      [event.target.id]: event.target.value,
+      [event.target.id]: event.target.value, //object keeps updating as we keep typing
     }));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     // eslint-disable-next-line no-console
-    login(state.username, state.password);
+    login(state.email, state.password).then((response) => {
+      console.log(response);
+      if (response.data.message === "Login Successful") {
+        navigate("/home");
+        isAuthenticated = true;
+      } else {
+        alert(response.data.message);
+      }
+    });
+    console.log(state);
   };
 
-  if (localStorage.getItem("user")) {
-    return <Navigate replace to="/home" />;
-  }
+  // if (localStorage.getItem("user")) {
+  //   return <Navigate replace to="/home" />;
+  // }
 
   return (
     <>
       {/* {isAuthenticated.toString()}
         <br />
-        {state.username + " " + state.password}
+        {state.email + " " + state.password}
         <div class="mb-3">
-          <label for="username" class="form-label">
+          <label for="email" class="form-label">
             Email address
           </label>
           <input
-            type="username"
+            type="email"
             class="form-control"
-            id="username"
-            value={state.username}
+            id="email"
+            value={state.email}
             onChange={handleChange}
             aria-describedby="emailHelp"
           />
@@ -95,12 +104,12 @@ export default function SignIn() {
                         </label>
                       </h6> */}
                       <CustomInput
-                        type="username"
+                        type="email"
                         labelText="Email"
                         class="form-control form-control-lg mb-4 "
-                        id="username"
-                        value={state.username}
-                        onChange={handleChange}
+                        id="email"
+                        value={state.email}
+                        handleChange={handleChange}
                         aria-describedby="emailHelp"
                         autoFocus="true"
                       />
@@ -117,7 +126,7 @@ export default function SignIn() {
                         labelText="Password"
                         class="form-control form-control-lg mb-5"
                         value={state.password}
-                        onChange={handleChange}
+                        handleChange={handleChange}
                         id="password"
                         autoFocus="true"
                       />

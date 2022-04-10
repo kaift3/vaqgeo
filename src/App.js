@@ -80,16 +80,6 @@ function App() {
                   />
 
                   <Route
-                    path="/services"
-                    exact
-                    element={
-                      <PrivateRoute>
-                        <Services />
-                      </PrivateRoute>
-                    }
-                  />
-
-                  <Route
                     path="/contact"
                     exact
                     element={

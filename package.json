@@ -22,6 +22,8 @@
     "leaflet-geosearch": "^3.6.0",
     "mdb-ui-kit": "^3.10.1",
     "react": "^17.0.2",
+    "react-alert": "^7.0.3",
+    "react-alert-template-basic": "^1.0.2",
     "react-bootstrap": "^2.0.2",
     "react-dom": "^17.0.2",
     "react-leaflet": "^3.2.4",
@@ -32,8 +34,12 @@
     "react-leaflet-fullscreen": "^2.0.2",
     "react-leaflet-geosearch": "^0.3.4",
     "react-leaflet-locate-control": "^0.1.6",
+    "react-redux": "^7.2.8",
     "react-router-dom": "^6.0.2",
     "react-scripts": "^4.0.3",
+    "redux": "^4.1.2",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.4.1",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -52,5 +58,8 @@
     ">0.2%",
     "not dead",
     "not op_mini all"
-  ]
+  ],
+  "resolutions": {
+    "react-error-overlay": "6.0.9"
+  }
 }

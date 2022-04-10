@@ -20,15 +20,15 @@ const MyNavbar = () => {
             About
           </Nav.Link>
 
-          <NavDropdown
+          {/* <NavDropdown
             menuVariant="dark"
             className="nav-item ms-4 fs-5"
-            title="Navigation"
+            title="Navigation" //title
             id="basic-nav-dropdown"
-          >
-            {/* <NavDropdown.Item href="/home">Home</NavDropdown.Item>
+          > */}
+          {/* <NavDropdown.Item href="/home">Home</NavDropdown.Item>
       <NavDropdown.Item href="/about">About</NavDropdown.Item> */}
-            {dropdownItems.map((item) => {
+          {/* {dropdownItems.map((item) => {
               return (
                 <NavDropdown.Item href={item.path} className="fs-5">
                   {item.title}
@@ -39,25 +39,28 @@ const MyNavbar = () => {
             <NavDropdown.Item href="/contact" className="fs-5">
               Hello
             </NavDropdown.Item>
-          </NavDropdown>
+          </NavDropdown> */}
           <NavDropdown
             menuVariant="dark"
             className="nav-item ms-4 fs-5"
-            title="OpenLayer"
+            title="Services"
             id="basic-nav-dropdown"
           >
             <NavDropdown.Item href="#action/3.1" className="fs-5">
-              Location
+              GeoTag
             </NavDropdown.Item>
             <NavDropdown.Item href="/mymap" className="fs-5">
               GeoFence
             </NavDropdown.Item>
-            <NavDropdown.Divider />
+
             <NavDropdown.Item href="#action/3.4" className="fs-5">
-              Map
+              Routes
             </NavDropdown.Item>
           </NavDropdown>
         </ul>
+        <div>
+          <p id="userName"></p>
+        </div>
         <form class="form-inline ">
           <button
             type="button"

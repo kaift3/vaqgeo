@@ -43,6 +43,7 @@ const markerIcon = new L.icon({
 
 export default function MyMap() {
   const pos = [18.5204, 73.8567];
+  //const pos = [0, 0];
   const mapRef = useRef();
   const [mapLayer, setMapLayer] = useState([]);
   const [Polygons, setPolygons] = useState([]); //polygons contain all the coordinates of a polygon/fence
@@ -98,8 +99,6 @@ export default function MyMap() {
     else alert("Not in the fence");
   }
 
-  //
-  //
   // Given three collinear points p, q, r,
   // the function checks if point q lies
   // on line segment 'pr'
@@ -219,11 +218,11 @@ export default function MyMap() {
   //   [18.515852418297065, 73.862528273318],
   // ];
 
-  // const testPoly = [
-  //   [18.521547464087433, 73.85760087494525],
-  //   [18.520423744610582, 73.85524817115075],
-  //   [18.519092371548023, 73.85741197165932],
-  // ];
+  const testPoly = [
+    [18.521547464087433, 73.85760087494525],
+    [18.520423744610582, 73.85524817115075],
+    [18.519092371548023, 73.85741197165932],
+  ];
 
   // const testPoint = [18.5204, 73.8567];
 
@@ -303,9 +302,6 @@ export default function MyMap() {
   const GeoSearchControlElement = SearchControl;
   const prov = OpenStreetMapProvider();
 
-  // Print and Download
-  // const PrintControl = useMap(PrintControlDefault);
-  // const printControlRef = useRef();
   return (
     <>
       <MapContainer
@@ -325,7 +321,7 @@ export default function MyMap() {
             position="topright"
             draw={{
               rectangle: true,
-              polyline: true,
+              polyline: false,
               circle: false,
               circlemarker: false,
               marker: true,
@@ -354,7 +350,9 @@ export default function MyMap() {
           className="locate-me-button"
           style={{ zIndex: "1000", position: "relative" }}
           onClick={geoFencing}
-        ></button>
+        >
+          <LocationMarker />
+        </button>
         <LocationMarker />
         <FullscreenControl position="topleft" />
         <GeoSearchControlElement

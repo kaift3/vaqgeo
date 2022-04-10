@@ -47,25 +47,24 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const login = (username, password) => {
+  const login = (email, password) => {
     setLoading(true);
-    console.log("inside login auth context");
-    const payload = { username: username, password: password };
-    axios
-      .post(`${API_URL}${LOGIN_URL}`, payload)
-      .then((response) => {
-        dispatch({
-          type: "LOGIN_SUCCESS",
-          payload: response.data,
-        });
-      })
-      .catch((error) => {
-        if (error.response) {
-          dispatch({
-            type: "LOGIN_FAILED",
-          });
-        }
-      });
+    //console.log("inside login auth context");
+    const payload = { email: email, password: password };
+    return axios.post(`${API_URL}${LOGIN_URL}`, payload);
+    // .then((response) => {
+    //   dispatch({
+    //     type: "LOGIN_SUCCESS",
+    //     payload: response.data,
+    //   });
+    // })
+    // .catch((error) => {
+    //   if (error.response) {
+    //     dispatch({
+    //       type: "LOGIN_FAILED",
+    //     });
+    //   }
+    // });
   };
 
   const logout = () => {
@@ -74,28 +73,31 @@ export const AuthProvider = ({ children }) => {
     });
   };
 
-  const saveUser = (username, password, designation) => {
+  const saveUser = (email, password, name) => {
     setLoading(true);
     const payload = {
-      username: username,
+      email: email,
       password: password,
-      designation: designation,
+      name: name,
     };
-    axios
-      .post(`${API_URL}${SAVE_URL}`, payload)
-      .then((response) => {
-        dispatch({
-          type: "SAVE_SUCCESS",
-        });
-      })
-      .catch((error) => {
-        if (error.response) {
-          dispatch({
-            type: "SAVE_FAILED",
-          });
-        }
-      });
+    return axios.post(`${API_URL}${SAVE_URL}`, payload);
+
+    // .then((response) => {
+    //   dispatch({
+    //     type: "SAVE_SUCCESS",
+    //   });
+    //   console.log(response.data.message);
+    //   return response.data.message;
+    // })
+    // .catch((error) => {
+    //   if (error.response) {
+    //     dispatch({
+    //       type: "SAVE_FAILED",
+    //     });
+    //   }
+    // });
   };
+
   return (
     <AuthContext.Provider
       value={{
